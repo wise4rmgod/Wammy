@@ -13,6 +13,7 @@ This is a simple project with most of the jetpack packages and retrofit 2.6.0, i
 * viewbinding
 * Material design components
 * kotlin
+* shimmer effect
 
 ## Author
 Nwokocha Wisdom 
