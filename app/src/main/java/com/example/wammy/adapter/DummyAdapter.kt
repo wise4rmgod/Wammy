@@ -33,7 +33,6 @@ class DummyAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val dataModel = dataList.get(position)
-
         holder.titleTextView.text = dataModel.title
         holder.adbody.text = dataModel.body
         holder.adid.text = dataModel.id.toString()

@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.shimmerViewContainer.startShimmerAnimation()
+
         fab.setOnClickListener {
             // Ordinary Intent for launching a new activity
             val intent = Intent(this, ReadActivity::class.java)
@@ -65,6 +67,8 @@ class MainActivity : AppCompatActivity() {
         viewModel.firstTodo.observe(this, Observer { t ->
             // val mLayoutManager = LinearLayoutManager(applicationContext)
             // recyclerView.layoutManager = mLayoutManager
+            binding.shimmerViewContainer.stopShimmerAnimation();
+            binding.shimmerViewContainer.setVisibility(View.GONE);
             binding.recyclerView.adapter =
                 DummyAdapter(t, applicationContext)
             binding.recyclerView.adapter?.notifyDataSetChanged()

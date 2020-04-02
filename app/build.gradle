@@ -52,6 +52,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.google.android.material:material:1.1.0'
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    // Shimmer effect
+    implementation 'io.supercharge:shimmerlayout:2.1.0'
     implementation 'com.github.wise4rmgod:AdnetwrokManager:0.1.0'
     // Kotlin
     implementation "androidx.activity:activity-ktx:$activity_version"
