@@ -11,26 +11,26 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.Observer
 import com.dev.adnetworkm.CheckNetworkStatus
 import com.example.wammy.R
-import com.example.wammy.adapter.NewsAdapter
+import com.example.wammy.adapter.DummyAdapter
+import com.example.wammy.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
     val viewModel: TodoViewmodel by viewModels()
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         fab.setOnClickListener {
-            // Ordinary Intent for launching a new activity
             // Ordinary Intent for launching a new activity
             val intent = Intent(this, ReadActivity::class.java)
 
             // Get the transition name from the string
-            // Get the transition name from the string
             val transitionName = getString(R.string.transition_string)
 
-            // Define the view that the animation will start from
             // Define the view that the animation will start from
             val viewStart: View = findViewById(R.id.fab)
 
@@ -40,14 +40,13 @@ class MainActivity : AppCompatActivity() {
                 transitionName // The String
             )
             //Start the Intent
-            //Start the Intent
             ActivityCompat.startActivity(this, intent, options.toBundle())
         }
 
         CheckNetworkStatus.getNetworkLiveData(applicationContext).observe(this, Observer { t ->
             when (t) {
                 true -> {
-                    showFirstTodo()
+                    showdummy()
                 }
                 false -> {
                     Toast.makeText(this, "No Network Connection", Toast.LENGTH_SHORT).show()
@@ -61,14 +60,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun showFirstTodo() {
+    private fun showdummy() {
 
         viewModel.firstTodo.observe(this, Observer { t ->
             // val mLayoutManager = LinearLayoutManager(applicationContext)
             // recyclerView.layoutManager = mLayoutManager
-            recyclerView.adapter =
-                NewsAdapter(t, applicationContext)
-            recyclerView.adapter?.notifyDataSetChanged()
+            binding.recyclerView.adapter =
+                DummyAdapter(t, applicationContext)
+            binding.recyclerView.adapter?.notifyDataSetChanged()
 
         })
     }
