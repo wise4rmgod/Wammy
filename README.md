@@ -1,5 +1,5 @@
 # Wammy
-This is a simple project with most of the jetpack packages and retrofit 2.6.0, it was built for learning and will also be updated
+This is a simple project with most of the jetpack packages and retrofit 2.6.0, it was built for learning purpose and will be updated time to time
 
 ## Built with
 * Shared Element
@@ -10,10 +10,11 @@ This is a simple project with most of the jetpack packages and retrofit 2.6.0, i
 * Repository Pattern
 * MVVM architecture
 * Androidx
-* viewbinding
+* Viewbinding
 * Material design components
-* kotlin
-* shimmer effect
+* Kotlin
+* Shimmer effect
+* Leak Canary2
 
 ## Author
 Nwokocha Wisdom 
