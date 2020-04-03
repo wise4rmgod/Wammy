@@ -8,7 +8,7 @@ This is a simple project with most of the jetpack packages and retrofit 2.6.0, i
 * Live Data
 * View Model
 * Repository Pattern
-* MVVM architechture
+* MVVM architecture
 * Androidx
 * viewbinding
 * Material design components
