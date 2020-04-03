@@ -19,7 +19,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -54,6 +54,8 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     // Shimmer effect
     implementation 'io.supercharge:shimmerlayout:2.1.0'
+    // leak canary2
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.2'
     implementation 'com.github.wise4rmgod:AdnetwrokManager:0.1.0'
     // Kotlin
     implementation "androidx.activity:activity-ktx:$activity_version"

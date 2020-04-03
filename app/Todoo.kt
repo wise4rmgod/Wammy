@@ -1,1 +1,0 @@
-class Todoo : ArrayList<TodooItem>()

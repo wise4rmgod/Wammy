@@ -14,6 +14,8 @@ import com.example.wammy.R
 import com.example.wammy.adapter.DummyAdapter
 import com.example.wammy.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
+import leakcanary.AppWatcher
+import leakcanary.ObjectWatcher
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,8 +25,45 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        // leak canary ref watcher
+        val objectWatcher: ObjectWatcher = AppWatcher.objectWatcher
+        // start shimmer effect
         binding.shimmerViewContainer.startShimmerAnimation()
+        gotonextativity()
+        checknetworkstatus()
+
+
+    }
+
+    private fun checknetworkstatus() {
+        CheckNetworkStatus.getNetworkLiveData(applicationContext).observe(this, Observer { t ->
+            when (t) {
+                true -> {
+                    showdummy()
+                }
+                false -> {
+                    Toast.makeText(this, "No Network Connection", Toast.LENGTH_SHORT).show()
+                }
+                null -> {
+                    // TODO: Handle the connection...
+                }
+            }
+        })
+    }
+
+    private fun showdummy() {
+
+        viewModel.firstTodo.observe(this, Observer { t ->
+            binding.shimmerViewContainer.stopShimmerAnimation()
+            binding.shimmerViewContainer.visibility = View.GONE
+            binding.recyclerView.adapter =
+                DummyAdapter(t, applicationContext)
+            binding.recyclerView.adapter?.notifyDataSetChanged()
+
+        })
+    }
+
+    fun gotonextativity() {
 
         fab.setOnClickListener {
             // Ordinary Intent for launching a new activity
@@ -44,35 +83,5 @@ class MainActivity : AppCompatActivity() {
             //Start the Intent
             ActivityCompat.startActivity(this, intent, options.toBundle())
         }
-
-        CheckNetworkStatus.getNetworkLiveData(applicationContext).observe(this, Observer { t ->
-            when (t) {
-                true -> {
-                    showdummy()
-                }
-                false -> {
-                    Toast.makeText(this, "No Network Connection", Toast.LENGTH_SHORT).show()
-                }
-                null -> {
-                    // TODO: Handle the connection...
-                }
-            }
-        })
-
-
-    }
-
-    private fun showdummy() {
-
-        viewModel.firstTodo.observe(this, Observer { t ->
-            // val mLayoutManager = LinearLayoutManager(applicationContext)
-            // recyclerView.layoutManager = mLayoutManager
-            binding.shimmerViewContainer.stopShimmerAnimation();
-            binding.shimmerViewContainer.setVisibility(View.GONE);
-            binding.recyclerView.adapter =
-                DummyAdapter(t, applicationContext)
-            binding.recyclerView.adapter?.notifyDataSetChanged()
-
-        })
     }
 }
