@@ -3,6 +3,7 @@ package com.example.wammy.ui
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.wammy.R
 import kotlinx.android.synthetic.main.activity_read.*
 

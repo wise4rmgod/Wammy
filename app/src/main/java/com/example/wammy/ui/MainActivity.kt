@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         gotonextativity()
         checknetworkstatus()
 
-
     }
 
     private fun checknetworkstatus() {
@@ -52,20 +51,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showdummy() {
-
         viewModel.firstTodo.observe(this, Observer { t ->
             binding.shimmerViewContainer.stopShimmerAnimation()
             binding.shimmerViewContainer.visibility = View.GONE
             binding.recyclerView.adapter =
                 DummyAdapter(t, applicationContext)
             binding.recyclerView.adapter?.notifyDataSetChanged()
-
         })
     }
 
     fun gotonextativity() {
 
         fab.setOnClickListener {
+
             // Ordinary Intent for launching a new activity
             val intent = Intent(this, ReadActivity::class.java)
 

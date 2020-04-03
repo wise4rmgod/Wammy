@@ -13,5 +13,4 @@ class RetrofitClient {
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build().create(Webservice::class.java)
     }
-
 }
