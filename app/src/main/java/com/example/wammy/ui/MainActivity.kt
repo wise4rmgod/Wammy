@@ -14,9 +14,6 @@ import com.example.wammy.R
 import com.example.wammy.adapter.DummyAdapter
 import com.example.wammy.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
-import leakcanary.AppWatcher
-import leakcanary.ObjectWatcher
-
 
 class MainActivity : AppCompatActivity() {
     val viewModel: TodoViewmodel by viewModels()
@@ -25,8 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // leak canary ref watcher
-        val objectWatcher: ObjectWatcher = AppWatcher.objectWatcher
+
         // start shimmer effect
         binding.shimmerViewContainer.startShimmerAnimation()
         gotonextativity()
@@ -66,13 +62,10 @@ class MainActivity : AppCompatActivity() {
 
             // Ordinary Intent for launching a new activity
             val intent = Intent(this, ReadActivity::class.java)
-
             // Get the transition name from the string
             val transitionName = getString(R.string.transition_string)
-
             // Define the view that the animation will start from
             val viewStart: View = findViewById(R.id.fab)
-
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this,
                 viewStart,  // Starting view
