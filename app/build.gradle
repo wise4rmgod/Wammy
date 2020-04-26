@@ -43,6 +43,7 @@ dependencies {
     def lifecycle_version = "2.3.0-alpha01"
     def arch_version = "2.1.0"
     def activity_version = "1.2.0-alpha02"
+    def dagversion = "2.24"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -51,7 +52,14 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.google.android.material:material:1.1.0'
+    // coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3"
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    //dagger
+    implementation "com.google.dagger:dagger-android:$dagversion"
+    kapt "com.google.dagger:dagger-compiler:$dagversion"
+    kapt "com.google.dagger:dagger-android-processor:$dagversion"
     // Shimmer effect
     implementation 'io.supercharge:shimmerlayout:2.1.0'
     // leak canary2

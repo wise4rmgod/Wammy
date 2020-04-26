@@ -13,7 +13,9 @@ import com.dev.adnetworkm.CheckNetworkStatus
 import com.example.wammy.R
 import com.example.wammy.adapter.DummyAdapter
 import com.example.wammy.databinding.ActivityMainBinding
+import com.example.wammy.utils.Constant
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class MainActivity : AppCompatActivity() {
     val viewModel: TodoViewmodel by viewModels()
@@ -45,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+
 
     private fun showdummy() {
         viewModel.firstTodo.observe(this, Observer { t ->
