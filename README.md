@@ -15,6 +15,7 @@ This is a simple project with most of the jetpack packages and retrofit 2.6.0, i
 * Kotlin
 * Shimmer effect
 * Leak Canary2
+* Kotlin Flow 
 
 ## Author
 Nwokocha Wisdom 
